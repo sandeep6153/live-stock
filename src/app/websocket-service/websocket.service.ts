@@ -15,6 +15,8 @@ export class WebsocketService {
    this.socket$ = webSocket(url);
    return this.socket$;
   }
-
+  disconnect() {
+    this.socket$.complete();
+  }
 
 }

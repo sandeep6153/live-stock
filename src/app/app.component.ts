@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { WebsocketService } from './websocket-service/websocket.service';
 
@@ -7,7 +7,7 @@ import { WebsocketService } from './websocket-service/websocket.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
 
   stocks: any[] = [];
@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
         
       })
          
+  }
+
+  ngOnDestroy() {
+    this.wsService.disconnect();
   }
   
 }
